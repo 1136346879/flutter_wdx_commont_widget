@@ -18,7 +18,8 @@ import 'package:fluttercomonwidget/materialComponents/paginated_data_table_demo.
 import 'package:fluttercomonwidget/materialComponents/card_demo.dart';
 import 'package:fluttercomonwidget/materialComponents/stepper_demo.dart';
 import 'form_demo.dart';
-
+import 'i18n/i18n_demo.dart';
+import 'ToastShow.dart';
 class MaterialComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class MaterialComponents extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+
           ListItem(title: 'Stepper', page: StepperDemo()),
           ListItem(title: 'Card', page: CardDemo()),
           ListItem(title: 'PaginatedDataTable', page: PaginatedDataTableDemo()),
@@ -47,8 +49,19 @@ class MaterialComponents extends StatelessWidget {
           ListItem(title: 'Form', page: FormDemo()),
           ListItem(title: 'PopupMenuButton', page: PopupMenuButtonDemo()),
           ListItem(title: 'Button', page: ButtonDemo()),
+          ListTile(
+            onTap: () {
+              ToastShow().showShortToast('I18nDemo');
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext ctx){
+                return I18nDemo();
+              }));
+            },
+            title: Text('I18nDemo'),
+            trailing: Icon(Icons.send),
+          ),
 //          ListItem(title: 'FloatingActionButton', page: FloatingActionButtonDemo()),
         ],
+
       ),
     );
   }

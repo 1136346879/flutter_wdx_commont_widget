@@ -63,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               onTap: () {
                 ToastShow().showShortToast('flutter-widget基础');
-                Navigator.pop(context);
                 Navigator.push(context, MaterialPageRoute(builder: (BuildContext ctx){
                   return every_page();
                 }));
@@ -141,16 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('AnimationDemo'),
               trailing: Icon(Icons.send),
             ),
-            ListTile(
-              onTap: () {
-                ToastShow().showShortToast('I18nDemo');
-                Navigator.push(context, MaterialPageRoute(builder: (BuildContext ctx){
-                  return I18nDemo();
-                }));
-              },
-              title: Text('I18nDemo'),
-              trailing: Icon(Icons.send),
-            ),
+
             ListTile(
               onTap: () {
                 ToastShow().showShortToast('TestDemo');

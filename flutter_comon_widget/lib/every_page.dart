@@ -28,8 +28,8 @@ class every_pageState extends State<every_page>{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        locale: Locale('en', 'US'),
-//         locale: Locale('zh', 'CN'),
+//        locale: Locale('en', 'US'),
+         locale: Locale('zh', 'CN'),
          localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
            return Locale('en', 'US');
          },
