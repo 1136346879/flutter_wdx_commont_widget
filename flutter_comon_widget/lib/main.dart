@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               onTap: () {
-                ToastShow().showShortToast('FormDemo');
+                ToastShow().showShortToast('FormDemo（注册）');
                 Navigator.push(context, MaterialPageRoute(builder: (BuildContext ctx){
                   return FormDemo();
                 }));

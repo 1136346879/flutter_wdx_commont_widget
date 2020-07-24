@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+/**
+ * form 表单  输入框  注册页面
+ */
 class FormDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FormDemo'),
+        title: Text('FormDemo（注册）'),
         elevation: 0.0,
       ),
       body: Theme(
@@ -64,8 +67,8 @@ class RegisterFormState extends State<RegisterForm> {
   }
 
   String validatePassword(value) {
-    if (value.isEmpty) {
-      return 'Password is required.';
+    if (value.isEmpty || value.toString().length<6) {
+      return '密码不能少于6位';
     }
 
     return null;
@@ -80,7 +83,7 @@ class RegisterFormState extends State<RegisterForm> {
           TextFormField(
             decoration: InputDecoration(
               labelText: 'Username',
-              helperText: '',
+              helperText: '请输入用户名',
             ),
             onSaved: (value) {
               username = value;
@@ -89,15 +92,15 @@ class RegisterFormState extends State<RegisterForm> {
             autovalidate: autovalidate,
           ),
           TextFormField(
-            obscureText: true,
+            obscureText: true,//隐藏文字
             decoration: InputDecoration(
               labelText: 'Password',
-              helperText: '',
+              helperText: '请输入密码',
             ),
             onSaved: (value) {
               password = value;
             },
-            validator: validatePassword,
+            validator: validatePassword,//提示
             autovalidate: autovalidate,
           ),
           SizedBox(height: 32.0,),
@@ -116,58 +119,63 @@ class RegisterFormState extends State<RegisterForm> {
   }
 }
 
-class TextFieldDemo extends StatefulWidget {
-  @override
-  TextFieldDemoState createState() => TextFieldDemoState();
-}
 
-class TextFieldDemoState extends State<TextFieldDemo> {
-  final textEditingController = TextEditingController();
 
-  @override
-  void dispose() {
-    textEditingController.dispose();
-    super.dispose();
-  }
 
-  @override
-  void initState() {
-    super.initState();
-    // textEditingController.text = 'hi';
-    textEditingController.addListener(
-      () {
-        debugPrint('input: ${textEditingController.text}');
-      }
-    );
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: textEditingController,
-      // onChanged: (value) {
-      //   debugPrint('input: $value');
-      // },
-      onSubmitted: (value) {
-        debugPrint('submit: $value');
-      },
-      decoration: InputDecoration(
-        icon: Icon(Icons.subject),
-        labelText: 'Title',
-        hintText: 'Enter the post title.',
-        // border: InputBorder.none,
-        // border: OutlineInputBorder(),
-        filled: true,
-      ),
-    );
-  }
-}
 
-class ThemeDemo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).accentColor,
-    );
-  }
-}
+//class TextFieldDemo extends StatefulWidget {
+//  @override
+//  TextFieldDemoState createState() => TextFieldDemoState();
+//}
+//
+//class TextFieldDemoState extends State<TextFieldDemo> {
+//  final textEditingController = TextEditingController();
+//
+//  @override
+//  void dispose() {
+//    textEditingController.dispose();
+//    super.dispose();
+//  }
+//
+//  @override
+//  void initState() {
+//    super.initState();
+//    // textEditingController.text = 'hi';
+//    textEditingController.addListener(
+//      () {
+//        debugPrint('input: ${textEditingController.text}');
+//      }
+//    );
+//  }
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return TextField(
+//      controller: textEditingController,
+//      // onChanged: (value) {
+//      //   debugPrint('input: $value');
+//      // },
+//      onSubmitted: (value) {
+//        debugPrint('submit: $value');
+//      },
+//      decoration: InputDecoration(
+//        icon: Icon(Icons.subject),
+//        labelText: 'Title',
+//        hintText: 'Enter the post title.',
+//        // border: InputBorder.none,
+//        // border: OutlineInputBorder(),
+//        filled: true,
+//      ),
+//    );
+//  }
+//}
+//
+//class ThemeDemo extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    return Container(
+//      color: Theme.of(context).accentColor,
+//    );
+//  }
+//}

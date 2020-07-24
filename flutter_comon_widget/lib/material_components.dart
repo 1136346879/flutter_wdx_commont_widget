@@ -30,7 +30,6 @@ class MaterialComponents extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-
           ListItem(title: 'Stepper', page: StepperDemo()),
           ListItem(title: 'Card', page: CardDemo()),
           ListItem(title: 'PaginatedDataTable', page: PaginatedDataTableDemo()),
@@ -60,6 +59,14 @@ class MaterialComponents extends StatelessWidget {
             trailing: Icon(Icons.send),
           ),
 //          ListItem(title: 'FloatingActionButton', page: FloatingActionButtonDemo()),
+          ListTile(
+            onTap: () {
+              ToastShow().showShortToast('路由跳转');
+              Navigator.pushNamed(context, '/http');
+            },
+            title: Text('路由跳转'),
+            trailing: Icon(Icons.send),
+          ),
         ],
 
       ),
