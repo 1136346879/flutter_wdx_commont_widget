@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:leancloud_storage/leancloud.dart';
+import 'ToastShow.dart';
 /**
  * form 表单  输入框  注册页面
  */
@@ -46,6 +47,13 @@ class RegisterFormState extends State<RegisterForm> {
       debugPrint('username: $username');
       debugPrint('password: $password');
 
+      var userInfo = _register();
+      userInfo .then((LCUser){
+        if(LCUser != null){
+          debugPrint('${LCUser.username}--注册： sucess');
+        }
+        ToastShow().showShortToast('${LCUser.username}--注册： sucess');
+      });
       Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text('Registering...'),
@@ -57,12 +65,23 @@ class RegisterFormState extends State<RegisterForm> {
       });
     }
   }
-
+  Future<LCUser> _register()  async{
+    // 创建实例
+    LCUser user = LCUser();
+    // 等同于 user['username'] = 'Tom';
+    user.username = '$username';
+    user.password = '$password';
+// 可选
+//    user.email = '1136346879@qq.com';
+//    user.mobile = '+8615201449190';
+// 设置其他属性的方法跟 LCObject 一样
+    user['gender'] = 'secret';
+    return  await user.signUp();
+  }
   String validateUsername(value) {
     if (value.isEmpty) {
       return 'Username is required.';
     }
-
     return null;
   }
 
@@ -70,7 +89,6 @@ class RegisterFormState extends State<RegisterForm> {
     if (value.isEmpty || value.toString().length<6) {
       return '密码不能少于6位';
     }
-
     return null;
   }
 

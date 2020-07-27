@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leancloud_storage/leancloud.dart';
 import 'ToastShow.dart';
 import 'every_page.dart';
 import 'i18n/intl/ninghao_demo_localizations.dart';
@@ -51,7 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    LeanCloud.initialize('i1fg7nB7HgnUo4OBTRdyH9N4-gzGzoHsz', 'ad1JbwGahamdN8WkRBUURls4',
+        server: 'https://i1fg7nb7.lc-cn-n1-shared.com',
+        queryCache: new LCQueryCache());
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
